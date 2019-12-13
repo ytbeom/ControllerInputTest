@@ -3,6 +3,11 @@ package ControllerInputTest;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,6 +26,7 @@ public class ControllerInputTest extends JFrame {
 	private JComboBox<String> strCombo;
 	private JButton startLogButton = new JButton("START LOG");
 	private JButton stopLogButton = new JButton("STOP LOG");
+	private JButton saveLogButton = new JButton("SAVE LOG");
 	private JTextArea deviceLog = new JTextArea();
 	private JScrollPane scrollPane = new JScrollPane(deviceLog);
 	
@@ -31,7 +37,7 @@ public class ControllerInputTest extends JFrame {
 	DeviceInputThread deviceInputThread;
 	
 	public ControllerInputTest() {
-		super("Life Enhancing Technology Lab. - Device Input Test");
+		super("Life Enhancing Technology Lab. - Controller Input Test");
 		
 		this.setUndecorated(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,8 +54,10 @@ public class ControllerInputTest extends JFrame {
 		panel.add(strCombo);
 		panel.add(startLogButton);
 		panel.add(stopLogButton);
+		panel.add(saveLogButton);
 		add(panel, "North");
 		add(scrollPane, "Center");
+		saveLogButton.setEnabled(false);
 		
 		this.setSize(1500, 400);
 		this.setVisible(true);
@@ -58,6 +66,7 @@ public class ControllerInputTest extends JFrame {
 		startLogButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deviceLog.setText("");
+				saveLogButton.setEnabled(false);
 				components = controllers[strCombo.getSelectedIndex()].getComponents();
 				deviceInputThread = new DeviceInputThread();
 				deviceInputThread.setStop(false);
@@ -68,6 +77,38 @@ public class ControllerInputTest extends JFrame {
 		stopLogButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deviceInputThread.setStop(true);
+				saveLogButton.setEnabled(true);
+			}
+		});
+		
+		saveLogButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int selectedIndex = strCombo.getSelectedIndex();
+					Controller controller = controllers[selectedIndex];
+					String controllerFileName = "Controller" + selectedIndex + "_" + controller.getType();
+					String outputFileName = controllerFileName+".csv";
+					File outputFile = new File(outputFileName);
+					if(outputFile.exists() == false) 
+						outputFile.createNewFile();
+					BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outputFile, true));
+					// index 저장
+					for (int i=0; i<controller.getComponents().length; i++)
+						bufferedWriter.write("Component index " + i + ",");
+					bufferedWriter.newLine();
+					bufferedWriter.flush();
+					
+					// deviceLog 저장
+					String log = deviceLog.getText().replaceAll("\t", ",");
+					bufferedWriter.write(log);
+					bufferedWriter.flush();
+					
+					bufferedWriter.close();
+				} catch(FileNotFoundException ex) {
+					ex.printStackTrace();
+				} catch(IOException ex) {
+					ex.printStackTrace();
+				}
 			}
 		});
 	}
@@ -82,7 +123,7 @@ public class ControllerInputTest extends JFrame {
 		public void run() {
 			while (!stop) {				
 				try {
-					Thread.sleep(100);
+					Thread.sleep(500);
 				} catch (Exception e) {}
 				controllers[strCombo.getSelectedIndex()].poll();
 				
