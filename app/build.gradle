@@ -9,6 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'edu.sc.seis.launch4j' version '2.5.0'
 }
 
 repositories {
@@ -17,6 +18,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'net.java.jinput:jinput:2.0.9'
+
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13.2'
 
@@ -27,4 +30,11 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClass = 'controller_input_test.ControllerInputTest'
+}
+
+launch4j {
+    outfile = 'ControllerInputTest.exe'
+    mainClassName = 'controller_input_test.ControllerInputTest'
+    bundledJrePath = projectDir.absolutePath + '/../jre'
+    bundledJre64Bit = 'true'
 }
