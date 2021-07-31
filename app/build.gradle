@@ -35,6 +35,6 @@ application {
 launch4j {
     outfile = 'ControllerInputTest.exe'
     mainClassName = 'controller_input_test.ControllerInputTest'
-    bundledJrePath = projectDir.absolutePath + '/../jre'
+    bundledJrePath = "${projectDir}/../jre"
     bundledJre64Bit = 'true'
 }
