@@ -35,6 +35,7 @@ application {
 launch4j {
     outfile = 'ControllerInputTest.exe'
     mainClassName = 'controller_input_test.ControllerInputTest'
-    bundledJrePath = "${projectDir}/../jre"
+    // Your JRE Path (e.g., C:\\Users\\user\\.jdks\\adopt-openj9-1.8.0_292\\jre)
+    bundledJrePath = 'C:\\Users\\ytbeom\\.jdks\\adopt-openj9-1.8.0_292\\jre'
     bundledJre64Bit = 'true'
 }
