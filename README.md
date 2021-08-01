@@ -17,7 +17,7 @@ Check the controllers and component indices before executing the program below:
 ## Requirements
 
 ### Host setup
-* [JAVA JDK](https://adoptopenjdk.net/) version **8** or higher **(JRE is required to run)**
+* [Java JDK](https://adoptopenjdk.net/) version **8** or higher **(JRE is required to run)**
 * [Gradle](https://gradle.org/install/) version **7.1.1** or higher
 * 64 bits Windows
 * [jinput-dx8_64.dll](https://kp.error-dll.info/file/jinput-dx8_64dll), [jinput-raw_64.dll](https://kp.error-dll.info/file/jinput-raw_64dll)
