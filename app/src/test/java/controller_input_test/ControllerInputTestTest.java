@@ -7,7 +7,5 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ControllerInputTestTest {
-    @Test void skippableTest() {
-        Assertions.assertTrue(true);
-    }
+
 }
