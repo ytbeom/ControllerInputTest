@@ -18,8 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.java.jinput:jinput:2.0.9'
-
+    implementation 'net.java.jinput:windows-plugin:2.0.9'
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13.2'
 
