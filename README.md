@@ -3,7 +3,7 @@
 [![Gradle](https://img.shields.io/badge/-gradle-02303A?style=flat&logo=gradle&link=https://gradle.org/)](https://gradle.org/)
 [![Dependencies](https://img.shields.io/badge/dependencies-jinput-brightgreen?style=flat&link=https://github.com/jinput/jinput)](https://github.com/jinput/jinput)
 
-Check the controllers and component indices before executing the program below.
+Check the controllers and component indices before executing the program below:
 * [Surrogate Reference Task](https://github.com/ytbeom/surrogate-reference-task)
 * [Critical Tracking Task](https://github.com/ytbeom/critical-tracking-task)
 * [2D Tracking Task](https://github.com/ytbeom/2D-tracking-task)
@@ -17,6 +17,7 @@ Check the controllers and component indices before executing the program below.
 ## Requirements
 
 ### Host setup
+* Java version **1.8** or newer (JRE required to run)
 * [Gradle](https://gradle.org/install/) version **7.1.1** or newer
 * 64 bits Windows
 * [jinput-dx8_64.dll](https://kp.error-dll.info/file/jinput-dx8_64dll), [jinput-raw_64.dll](https://kp.error-dll.info/file/jinput-raw_64dll)
