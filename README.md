@@ -1,7 +1,7 @@
 # Controller Input Test
 
-[![Gradle](https://img.shields.io/badge/-gradle-02303A?style=flat&logo=gradle&link=https://gradle.org/)](https://gradle.org/)
-[![Dependencies](https://img.shields.io/badge/dependencies-jinput-brightgreen?style=flat&link=https://github.com/jinput/jinput)](https://github.com/jinput/jinput)
+[![Gradle](https://img.shields.io/badge/-gradle-02303A?style=flat&logo=gradle)](https://gradle.org/)
+[![Dependencies](https://img.shields.io/badge/dependencies-jinput-brightgreen?style=flat)](https://github.com/jinput/jinput)
 
 Check the controllers and component indices before executing the program below:
 * [Surrogate Reference Task](https://github.com/ytbeom/surrogate-reference-task)
